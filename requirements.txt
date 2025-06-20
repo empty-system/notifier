@@ -1,0 +1,8 @@
+requests
+bs4
+win10toast
+time
+os
+hashlib
+json
+datetime
