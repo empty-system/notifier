@@ -16,5 +16,3 @@ Install the requirements
 
 # How to run it
 > double click run.bat
-
-You have to set your path to save in the script.
