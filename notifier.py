@@ -8,8 +8,8 @@ import json
 from datetime import datetime, timedelta
 
 # Setup
-URL_FILE = "urls.txt" # Input
-STORAGE_DIR = "last_content" # Output
+URL_FILE = "C:/Users/Shenmue/Desktop/desktop/coding vite fait/change/urls.txt" # Input
+STORAGE_DIR = "C:/Users/Shenmue/Desktop/desktop/coding vite fait/change/last_content" # Output
 CHECK_INTERVAL = 300  # 300 sec = 5 min
 CLASS_NAME = "overlay"
 
@@ -52,8 +52,8 @@ def notify(title, messages):
         full_msg = full_msg[:490] + "\n[...]"
     notifier.show_toast(title, full_msg, duration=10)
 
-STATS_FILE = "stats.json"
-RESET_FILE = "stats_reset.txt"
+STATS_FILE = "C:/Users/Shenmue/Desktop/desktop/coding vite fait/change/stats.json"
+RESET_FILE = "C:/Users/Shenmue/Desktop/desktop/coding vite fait/change/stats_reset.txt"
 
 def load_reset_date():
     if not os.path.exists(RESET_FILE):
@@ -107,15 +107,17 @@ def main():
             previous_links = read_previous(filename)
 
             new_items = [link for link in current_links if link not in previous_links]
+            print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Checked {url}, found {len(current_links)} links.")
 
             if new_items:
                 count_new = len(new_items)
 
-                if url not in stats:
+                if not isinstance(stats.get(url), dict):
                     stats[url] = {
                         "total": 0,
                         "last_notif": []
                     }
+
 
                 stats[url]["total"] += count_new
 
